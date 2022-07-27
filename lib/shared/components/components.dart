@@ -19,10 +19,10 @@ Widget defaultButton({
           function();
         },
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 15),
+          padding: const EdgeInsets.symmetric(vertical: 15),
           child: Text(
             isUpperCase ? text.toUpperCase() : text,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ),
@@ -32,11 +32,11 @@ Widget defaultFormField({
   required TextEditingController controller,
   required TextInputType type,
   Function? onSubmit,
-  Function? onChange,
-  Function? onTap,
+  void Function(String)? onChange,
+  void Function()? onTap,
   bool isPassword = false,
   bool isClickable = true,
-  required Function validate,
+  String? Function(String?)? validate,
   required String label,
   required IconData prefixIcon,
   IconData? suffixIcon,
@@ -50,15 +50,9 @@ Widget defaultFormField({
       onFieldSubmitted: (value) {
         onSubmit!(value);
       },
-      onChanged: (value) {
-        onChange!(value);
-      },
-      onTap: () {
-        onTap!();
-      },
-      validator: (value) {
-        validate(value);
-      },
+      onChanged: onChange,
+      onTap: onTap,
+      validator: validate,
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(
@@ -74,6 +68,6 @@ Widget defaultFormField({
                 ),
               )
             : null,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
     );
