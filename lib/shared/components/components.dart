@@ -19,10 +19,10 @@ Widget defaultButton({
           function();
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15),
+          padding: EdgeInsets.symmetric(vertical: 15),
           child: Text(
             isUpperCase ? text.toUpperCase() : text,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ),
@@ -68,6 +68,6 @@ Widget defaultFormField({
                 ),
               )
             : null,
-        border: const OutlineInputBorder(),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
       ),
     );

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../shared/components/components.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -31,8 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   const Text(
                     'Login',
-                    style:
-                        TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 35.0, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 30.0,
@@ -40,45 +42,36 @@ class _LoginScreenState extends State<LoginScreen> {
                   defaultFormField(
                       controller: emailController,
                       type: TextInputType.emailAddress,
-                      radius: 20,
-
-                      validate: (String? value)
-                      {
-                        if(value!.isEmpty)
-                        {
+                      radius: 30,
+                      validate: (String? value) {
+                        if (value!.isEmpty) {
                           return 'Email must not be empty';
                         }
                         return null;
                       },
                       label: 'Email Address',
                       prefixIcon: Icons.mail),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   defaultFormField(
                       controller: passwordController,
                       type: TextInputType.visiblePassword,
                       isPassword: isPassword,
-
-                      radius: 20,
-                      validate: (String? value)
-                      {
-                        if(value!.isEmpty)
-                        {
+                      radius: 30,
+                      validate: (String? value) {
+                        if (value!.isEmpty) {
                           return 'Password must not be empty';
                         }
                         return null;
                       },
                       label: 'Password',
                       prefixIcon: Icons.lock,
-                    suffixIcon: isPassword? Icons.visibility_off: Icons.visibility,
-                    suffixPressed: ()
-                    {
-                      setState(()
-                      {
-                        isPassword = !isPassword;
-                      });
-                    }
-
-                  ),
+                      suffixIcon:
+                          isPassword ? Icons.visibility_off : Icons.visibility,
+                      suffixPressed: () {
+                        setState(() {
+                          isPassword = !isPassword;
+                        });
+                      }),
                   const SizedBox(
                     height: 20.0,
                   ),
@@ -86,11 +79,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     text: 'LOGIN',
                     isUpperCase: true,
                     radius: 20,
-                    function: ()
-                    {
-                      if (
-                      formKey.currentState!.validate())
-                      {
+                    function: () {
+                      if (formKey.currentState!.validate()) {
                         print(emailController.text);
                         print(passwordController.text);
                       }
@@ -105,13 +95,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       const Text(
                         'Don\'t have an account?',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                       TextButton(
                         onPressed: () {},
                         child: const Text(
                           'Register Now',
-                          style: TextStyle(color: Colors.blue),
+                          style: TextStyle(
+                              color: Colors.blue, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
